@@ -34,8 +34,9 @@ public class UrlRegister {
     @CreatedDate
     private LocalDateTime createdDate;
 
-    public UrlRegister(String urlBase, User user){
+    public UrlRegister(String urlBase, UrlAvailable urlAvailable, User user){
         this.urlBase = urlBase;
+        this.urlAvailable = urlAvailable;
         this.user = user;
     }
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.websocket.server.PathParam;
+import java.security.Principal;
 
 @RestController
 public class UrlController {
@@ -19,8 +20,8 @@ public class UrlController {
     private UrlService urlService;
 
     @PostMapping(value = "/short-url")
-    private ResponseEntity<String> createShortUrl(@RequestBody String url) {
-        String shortUrl = urlService.createShortUrl(url);
+    private ResponseEntity<String> createShortUrl(@RequestBody String url, Principal principal) {
+        String shortUrl = urlService.createShortUrl(url, principal);
         return ResponseEntity.status(HttpStatus.CREATED).body(shortUrl);
     }
 
