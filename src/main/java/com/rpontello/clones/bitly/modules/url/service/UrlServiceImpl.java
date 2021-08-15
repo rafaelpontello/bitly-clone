@@ -2,16 +2,16 @@ package com.rpontello.clones.bitly.modules.url.service;
 
 import com.rpontello.clones.bitly.database.repositories.UrlRegisterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.security.Principal;
-
+@Service
 public class UrlServiceImpl implements UrlService{
 
     @Autowired
     private UrlRegisterRepository urlRegisterRepository;
 
     @Override
-    public String shortingUrl(String url, Principal principal) {
+    public String createShortUrl(String url) {
         return null;
     }
 
