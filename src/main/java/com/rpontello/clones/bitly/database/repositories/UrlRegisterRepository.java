@@ -7,5 +7,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UrlRegisterRepository extends CrudRepository<UrlRegister, UUID> {
-    Optional<UrlRegister> findByUrlAvailable_UrlHash(String hash);
+    Optional<UrlRegister> findByUrlAvailable_Url(String hash);
 }

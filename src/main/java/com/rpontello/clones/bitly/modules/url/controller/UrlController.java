@@ -1,6 +1,7 @@
 package com.rpontello.clones.bitly.modules.url.controller;
 
 
+import com.rpontello.clones.bitly.models.dto.UrlRegisterDTO;
 import com.rpontello.clones.bitly.modules.url.service.UrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,15 +21,17 @@ public class UrlController {
     private UrlService urlService;
 
     @PostMapping(value = "/short-url")
-    private ResponseEntity<String> createShortUrl(@RequestBody String url, Principal principal) {
-        String shortUrl = urlService.createShortUrl(url, principal);
+    private ResponseEntity<String> createShortUrl(
+            @RequestBody UrlRegisterDTO urlRegisterDTO,
+            Principal principal
+    ) {
+        String shortUrl = urlService.createShortUrl(urlRegisterDTO, principal);
         return ResponseEntity.status(HttpStatus.CREATED).body(shortUrl);
     }
 
-    @GetMapping(value = "/{hash}")
-    private ResponseEntity<String> getUrl(@PathParam("hash") String hash) {
-        String url = urlService.getUrlByHash(hash);
-        return ResponseEntity.ok(url);
+    @GetMapping(value = "/{url}")
+    private ResponseEntity<String> getUrl(@PathParam("url") String url) {
+        return ResponseEntity.ok(urlService.getFullUrl(url));
     }
 
 }
