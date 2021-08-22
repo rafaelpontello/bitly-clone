@@ -89,7 +89,7 @@ public class UrlServiceImpl implements UrlService{
     }
 
     private User getLoggedUser(Principal principal) {
-        Optional<User> loggedUser =  userRepository.findByName(principal.getName());
+        Optional<User> loggedUser =  userRepository.findByUsername(principal.getName());
 
         if (loggedUser.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "User haven't permission");
